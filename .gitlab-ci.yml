@@ -1,7 +1,7 @@
 image: debian:latest
 
 before_script:
-  - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+  - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
   - apt-get clean
   - apt-get update -y
   - apt-get install -y curl git
@@ -12,12 +12,21 @@ before_script:
 
 stages:
 #  - test
+  - build
   - deploy
 
 #test:
 #  stage: test
 #  script:
 #    - npm test
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - lib/
 
 deploy:
   stage: deploy
@@ -26,3 +35,6 @@ deploy:
     - npm publish --access public
   only:
     - master
+  artifacts:
+      paths:
+        - lib/
