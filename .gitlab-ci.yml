@@ -1,6 +1,7 @@
 image: debian:latest
 
 before_script:
+  - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
   - apt-get clean
   - apt-get update -y
   - apt-get install -y curl git
@@ -22,6 +23,6 @@ deploy:
   stage: deploy
   script:
     - scripts/update-authors.sh
-    - npm run ci-publish || true
+    - npm publish --access public
   only:
     - master

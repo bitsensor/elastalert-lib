@@ -19,13 +19,11 @@
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "~6.11.4",
-    "babel-preset-es2015": "~6.13.2",
-    "ci-publish": "~1.3.0"
+    "babel-preset-es2015": "~6.13.2"
   },
   "scripts": {
     "build": "babel src -d lib",
-    "prepublish": "npm run build",
-    "ci-publish": "ci-publish"
+    "prepublish": "npm run build"
   },
   "main": "./lib/index.js"
 }
