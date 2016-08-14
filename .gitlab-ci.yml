@@ -7,14 +7,14 @@ before_script:
   - npm install
 
 stages:
-#  - test
+  - test
   - build
   - deploy
 
-#test:
-#  stage: test
-#  script:
-#    - npm test
+test:
+  stage: test
+  script:
+    - npm test
 
 build:
   stage: build
@@ -27,7 +27,7 @@ build:
 deploy:
   stage: deploy
   script:
-    - scripts/update-authors.sh
+    - npm run update-authors
     - npm publish --access public
   only:
     - master
