@@ -28,7 +28,7 @@
   },
   "scripts": {
     "build": "babel src -d lib",
-    "test": "mocha test --compilers js:babel-register",
+    "test": "mocha test --colors --compilers js:babel-register",
     "update-authors": "./scripts/update-authors.sh"
   },
   "main": "./lib/index.js"
