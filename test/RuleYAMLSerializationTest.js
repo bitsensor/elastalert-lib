@@ -37,7 +37,6 @@ describe('Rule YAML Serialization', function () {
     ['email', ['elastalert@example.com']]
   ]);
 
-  console.log(serializer.toYaml(rule));
   it('output', function () {
     assert.equal(serializer.toYaml(rule), data);
   });
