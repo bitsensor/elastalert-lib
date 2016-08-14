@@ -13,12 +13,12 @@ describe('Rule YAML Deserialization', function () {
     + 'timeframe:' + "\n"
     + '  hours: 4' + "\n"
     + 'filter:' + "\n"
-    + '- term:' + "\n"
-    + '    some_field: "some_value"' + "\n"
+    + '  - term:' + "\n"
+    + '      some_field: some_value' + "\n"
     + 'alert:' + "\n"
-    + '- "email"' + "\n"
+    + '  - email' + "\n"
     + 'email:' + "\n"
-    + '- "elastalert@example.com"');
+    + '  - elastalert@example.com' + "\n");
 
   it('name', function () {
     assert.equal(data.name, 'Example rule');

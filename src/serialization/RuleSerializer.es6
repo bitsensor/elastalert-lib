@@ -8,7 +8,7 @@ export default class RuleSerializer {
    * @param rule {Rule}
    */
   static toYaml(rule) {
-
+    return jsyaml.safeDump(RuleSerializer._toJson(rule));
   }
 
   /**
@@ -25,7 +25,15 @@ export default class RuleSerializer {
    * @private
    */
   static _toJson(rule) {
+    var json = {};
+    json.name = rule.name;
+    json.type = rule.type;
 
+    rule.config.forEach((value, key) => {
+      json[key] = value;
+    });
+
+    return json;
   }
 
   /**
