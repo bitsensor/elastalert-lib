@@ -7,19 +7,22 @@ before_script:
   - npm install
 
 stages:
-  - test
   - build
+  - test
   - deploy
-
-test:
-  stage: test
-  script:
-    - npm test
 
 build:
   stage: build
   script:
     - npm run build
+  artifacts:
+    paths:
+      - lib/
+
+test:
+  stage: test
+  script:
+    - npm test
   artifacts:
     paths:
       - lib/
