@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "babel src -d lib",
-    "test": "istanbul cover _mocha -- test --colors",
+    "test": "./scripts/test.sh",
     "update-authors": "./scripts/update-authors.sh"
   },
   "main": "./lib/index.js"
