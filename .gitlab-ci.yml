@@ -7,14 +7,9 @@ before_script:
   - npm install
 
 stages:
-#  - test
   - build
+  - test
   - deploy
-
-#test:
-#  stage: test
-#  script:
-#    - npm test
 
 build:
   stage: build
@@ -23,14 +18,21 @@ build:
   artifacts:
     paths:
       - lib/
+      - node_modules/
+
+test:
+  stage: test
+  script:
+    - npm test
+  artifacts:
+    paths:
+      - lib/
+      - node_modules/
 
 deploy:
   stage: deploy
   script:
-    - scripts/update-authors.sh
+    - npm run update-authors
     - npm publish --access public
   only:
     - master
-  artifacts:
-      paths:
-        - lib/
