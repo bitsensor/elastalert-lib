@@ -1,9 +1,12 @@
 import jsyaml from "js-yaml";
 import Rule from "../Rule";
 
+/**
+ * Serializer for {@link Rule}. Provides conversion to and from YAML.
+ */
 export default class RuleSerializer {
   /**
-   * Convert a {Rule} to YAML.
+   * Convert a {@link Rule} to YAML.
    *
    * @param rule {Rule}
    */
@@ -12,7 +15,7 @@ export default class RuleSerializer {
   }
 
   /**
-   * Convert YAML to a {Rule}.
+   * Convert YAML to a {@link Rule}.
    * @param yaml {string}
    * @returns {Rule}
    */
@@ -21,6 +24,7 @@ export default class RuleSerializer {
   }
 
   /**
+   * Convert a {@link Rule} to JSON.
    * @param rule {Rule}
    * @private
    */
@@ -37,6 +41,7 @@ export default class RuleSerializer {
   }
 
   /**
+   * Convert JSON to a {@link Rule}.
    * @param json {object}
    * @private
    */
