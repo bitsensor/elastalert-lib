@@ -1,6 +1,6 @@
 import 'babel-polyfill';
-import Alert from './alert';
-import Rule from './alert';
+import Alert from './Alert';
+import Rule from './Rule';
 import RuleSerializer from './serialization/RuleSerializer';
 
 let elastalertLib = {

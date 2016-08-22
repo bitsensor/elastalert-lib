@@ -1,8 +1,11 @@
-require('../lib/index');
-var serializer = require('../lib/serialization/RuleSerializer').default;
+var elastalertLib = require('../lib/index').default;
 var assert = require('assert');
 var it = require("mocha").it;
 var describe = require("mocha").describe;
+
+var serializer = new elastalertLib.RuleSerializer();
+
+console.log(new elastalertLib.RuleSerializer());
 
 describe('Rule YAML Deserialization', function () {
   var data = serializer.fromYaml(
