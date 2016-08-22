@@ -1,4 +1,4 @@
-var elastalertLib = require('../lib/index').default;
+var elastalertLib = require('../lib/index');
 var assert = require('assert');
 var it = require("mocha").it;
 var describe = require("mocha").describe;
@@ -36,6 +36,6 @@ describe('Rule YAML Serialization', function () {
   ]);
 
   it('output', function () {
-    assert.equal(serializer.toYaml(rule), data);
+    assert.equal(elastalertLib.serialisation.rule.toYaml(rule), data);
   });
 });
