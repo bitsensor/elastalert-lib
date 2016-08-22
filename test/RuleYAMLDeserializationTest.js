@@ -1,14 +1,13 @@
 var elastalertLib = require('../lib/index').default;
+var ruleSerialisation = require('../lib/serialization/ruleSerialisation');
 var assert = require('assert');
 var it = require("mocha").it;
 var describe = require("mocha").describe;
 
-var serializer = new elastalertLib.RuleSerializer();
-
-console.log(new elastalertLib.RuleSerializer());
+console.log(ruleSerialisation);
 
 describe('Rule YAML Deserialization', function () {
-  var data = serializer.fromYaml(
+  var data = ruleSerialisation.fromYaml(
     'name: Example rule' + "\n"
     + 'type: frequency' + "\n"
     + 'index: logstash-*' + "\n"
