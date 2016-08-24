@@ -10,7 +10,7 @@ This project is currently under active development by [BitSensor](https://www.bi
 on our project page. 
 
 # Requirements
-* `node > 0.12.10`
+* `node >= 4.5.0`
 
 # Getting Started
 * `npm install --save @bitsensor/elastalert-lib`
