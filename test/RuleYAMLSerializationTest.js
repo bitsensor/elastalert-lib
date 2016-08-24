@@ -1,6 +1,4 @@
-require('../lib/index');
-var serializer = require('../lib/serialization/RuleSerializer').default;
-var Rule = require('../lib/Rule').default;
+var elastalertLib = require('../lib/index').default;
 var assert = require('assert');
 var it = require("mocha").it;
 var describe = require("mocha").describe;
@@ -24,7 +22,7 @@ describe('Rule YAML Serialization', function () {
   /**
    * @type {Rule}
    */
-  var rule = new Rule('Example rule', 'frequency');
+  var rule = new elastalertLib.Rule('Example rule', 'frequency');
 
   rule.config = new Map([
     ['index', 'logstash-*'],
@@ -38,6 +36,6 @@ describe('Rule YAML Serialization', function () {
   ]);
 
   it('output', function () {
-    assert.equal(serializer.toYaml(rule), data);
+    assert.equal(elastalertLib.serialisation.rule.toYaml(rule), data);
   });
 });
