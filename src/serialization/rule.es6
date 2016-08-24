@@ -1,5 +1,5 @@
 import jsyaml from "js-yaml";
-import Rule from "../Rule";
+import Rule from "../classes/Rule";
 
 /**
  * Serializer for {@link Rule}. Provides conversion to and from YAML.
