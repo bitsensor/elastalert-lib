@@ -1,7 +1,8 @@
-var elastalertLib = require('../lib/index');
+var elastalertLib = require('../lib/index').default;
 var assert = require('assert');
 var it = require("mocha").it;
 var describe = require("mocha").describe;
+var util = require('util');
 
 describe('Rule YAML Deserialization', function () {
   var data = elastalertLib.serialisation.rule.fromYaml(

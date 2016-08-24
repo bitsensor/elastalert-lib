@@ -1,4 +1,4 @@
-var elastalertLib = require('../lib/index');
+var elastalertLib = require('../lib/index').default;
 var assert = require('assert');
 var it = require("mocha").it;
 var describe = require("mocha").describe;
