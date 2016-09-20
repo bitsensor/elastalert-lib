@@ -1,19 +1,18 @@
 image: bitsensor/nvm
 
-before_script:
-  - source ~/.bashrc
-  - nvm install "$(cat .node-version)"
-  - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-  - npm install
-
 stages:
   - build
   - test
   - deploy
+  - mirror
 
 build:
   stage: build
   script:
+    - source ~/.bashrc
+    - nvm install "$(cat .node-version)"
+    - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+    - npm install
     - npm run build
   artifacts:
     paths:
@@ -23,6 +22,10 @@ build:
 test:
   stage: test
   script:
+    - source ~/.bashrc
+    - nvm install "$(cat .node-version)"
+    - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+    - npm install
     - npm test
   artifacts:
     paths:
@@ -32,7 +35,22 @@ test:
 deploy:
   stage: deploy
   script:
+    - source ~/.bashrc
+    - nvm install "$(cat .node-version)"
+    - npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+    - npm install
     - npm run update-authors
     - npm publish --access public
   only:
     - master
+
+mirror:github:
+  image: debian
+  stage: mirror
+  script:
+    - apt-get update && apt-get install -y git
+    - git clone --mirror https://git.bitsensor.io/common/elastalert-lib.git mirror-github
+    - cd mirror-github
+    - git remote add github https://$MIRROR_GITHUB_USER:$MIRROR_GITHUB_PASSWORD@$MIRROR_GITHUB_URL
+    - git push -u github -q --mirror
+  when: always
